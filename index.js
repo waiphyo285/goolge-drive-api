@@ -87,3 +87,36 @@ async function generatePublicURL() {
 }
 
 generatePublicURL();
+
+async function getFileList() {
+    // drive.files.list({}, (err, res) => {
+    //     if (err) throw err;
+    //     const files = res.data.files;
+
+    //     if (files.length) {
+    //         files.map((file) => {
+    //           console.log(file);
+    //         });
+    //     } else {
+    //       console.log('No files found');
+    //     }
+    // });
+
+    try {
+
+        const fileList = await drive.files.list({});
+
+        if (fileList.length) {
+            fileList.map((file) => {
+              console.log(file);
+            });
+        } else {
+          console.log('No files found');
+        }
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+getFileList();
